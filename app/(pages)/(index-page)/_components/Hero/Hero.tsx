@@ -14,7 +14,7 @@ export default function Hero() {
         />
       </div>
       <div className={styles.welcome}>
-        <h1>ESTORE MANAGEMENT TOOL</h1>
+        <h1>ESTORE DEMO - OSUMEKEYS CLONE</h1>
       </div>
     </div>
   );
