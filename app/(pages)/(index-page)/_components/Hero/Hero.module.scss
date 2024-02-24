@@ -1,4 +1,4 @@
-@use 'app/(pages)/_globals/mixins';
+@use 'media';
 
 .container {
     display: flex;
@@ -8,7 +8,7 @@
     width: 100%;
     position: relative;
     padding: var(--large-spacer);
-    @include mixins.phone {
+    @include media.phone {
         padding: var(--medium-spacer);
     }
 
@@ -27,7 +27,7 @@
         max-width: 1620px;
         height: 100%;
         border-radius: var(--b-radius);
-        border: solid 2px var(--light-background);
+        border: solid 2px var(--background-light);
         display: flex;
         flex-direction: column;
         justify-content: center;
