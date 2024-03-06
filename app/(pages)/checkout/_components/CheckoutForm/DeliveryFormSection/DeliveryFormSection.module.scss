@@ -1,0 +1,8 @@
+@use "app/(pages)/_globals/mixins";
+
+.delivery_form {
+	display: flex;
+	flex-direction: column;
+	gap: var(--small-spacer);
+	padding: var(--spacer);
+}

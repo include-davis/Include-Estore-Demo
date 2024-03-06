@@ -6,11 +6,14 @@
 
     --primary: var(--include-purple);
     --secondary: #e7c6f9;
+	--tertiary: #bf9a90;
+	--tertiary-light: #f8f6f5;
     --light-background: rgb(241, 240, 240);
     --dark-background: #0d303b;
 
     --text-dark: #0d303b;
     --text-light: #def6ff;
+	--text-grey: #808080;
 
     /* spacers */
     --tiny-spacer: 8px;
@@ -22,8 +25,15 @@
     /* border radius */
     --b-radius: 8px;
 
+	/* input border */
+	--b-input: 1px solid #d3d3d3;
+	--b-input-focus: 2px solid var(--tertiary);
+
     /* navbar */
     --navbar-height: 80px;
+
+	/* icon size */
+	--icon-input-size: 1.5rem;
 
     background-color: var(--light-background);
 }
@@ -55,4 +65,7 @@ h4 {
 }
 p {
     font-size: 1rem;
+}
+input, select {
+	font-size: 1rem;
 }

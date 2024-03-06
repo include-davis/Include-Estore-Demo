@@ -1,0 +1,46 @@
+.delivery_options {
+	border: none;
+	border-radius: var(--b-radius);
+	background-color: white;
+
+	.opt {
+		display: flex;
+		align-items: center;
+		gap: var(--tiny-spacer);
+		padding: var(--small-spacer);
+		border: var(--b-input);
+		border-radius: var(--b-radius);
+
+		&:has(> input:checked) {
+			background-color: var(--tertiary-light);
+			border: 1px solid var(--tertiary);
+			outline: none;
+			accent-color: var(--tertiary);
+		}
+
+		&:first-child {
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+	
+			&:not(:has(> input:checked)) {
+				border-bottom: none;
+			}
+		}
+
+		&:last-child {
+			border-top-left-radius: 0;
+			border-top-right-radius: 0;
+	
+			&:not(:has(> input:checked)) {
+				border-top: none;
+			}
+		}
+
+		.icon {
+			font-size: var(--icon-input-size);
+			margin-left: auto;
+			color: var(--tertiary);
+			fill: var(--tertiary);
+		}
+	}
+}

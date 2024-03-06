@@ -1,0 +1,62 @@
+.input_field {
+	position: relative;
+	width: 100%;
+	
+	input, select {
+		padding: var(--small-spacer) var(--small-spacer) ;
+		width: 100%;
+		border: var(--b-input);
+		border-radius: var(--b-radius);
+		transition: 250ms;
+		
+		&:focus {
+			border: var(--b-input-focus);
+			outline: none;
+		}
+
+		&.invalid,
+		&::placeholder {
+			color: var(--text-grey);
+		}
+	}
+
+	/* remove default Safari styling */
+	select {
+		-webkit-appearance: none;
+		appearance: none;
+	}
+
+	.icon {
+		font-size: var(--icon-input-size);
+		fill: var(--text-grey);
+		position: absolute;
+		right: var(--small-spacer);
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	label {
+		position: absolute;
+		top: var(--tiny-spacer);
+		left: var(--small-spacer);
+		color: var(--text-grey);
+		transition: transform 250ms;	
+		transform-origin: left center;
+	}
+
+	select.valid + label, 
+	input:not(:placeholder-shown) + label {
+		  transform: translateY(-10%) scale(0.75);
+	}
+
+	select.valid,
+	input:not(:placeholder-shown) {
+		padding-top: var(--spacer);
+		padding-bottom: var(--tiny-spacer);
+	}
+
+	select.invalid + label,
+	input:placeholder-shown + label {
+		display: none;
+	}	
+}	
