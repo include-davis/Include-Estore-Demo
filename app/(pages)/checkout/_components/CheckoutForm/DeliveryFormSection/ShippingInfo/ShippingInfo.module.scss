@@ -1,0 +1,10 @@
+.shipping_info {
+	display: flex;
+	flex-direction: column;
+	gap: var(--small-spacer);
+
+	.input_group {
+		display: flex;
+		gap: var(--small-spacer);
+	}
+}
