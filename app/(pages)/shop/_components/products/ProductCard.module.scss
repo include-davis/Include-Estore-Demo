@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--small-spacer);
+    width: calc(calc(100% - 2 * var(--spacer)) / 3);
+}
+
+.prod_image_container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 7/5;
+}
+
+.prod_img {
+    object-fit: cover;
+}
+
+.details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .name {
+        font-size: 1.25rem;
+        color: var(--text-mid-grey);
+    }
+
+    .price {
+        color: var(--text-dark);
+    }
+}

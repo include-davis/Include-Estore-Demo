@@ -1,9 +1,4 @@
-import Hero from './_components/Hero/Hero';
-
+import styles from './page.module.scss';
 export default function Home() {
-  return (
-    <main>
-      <Hero />
-    </main>
-  );
+  return <main className={styles.container}>welcome</main>;
 }

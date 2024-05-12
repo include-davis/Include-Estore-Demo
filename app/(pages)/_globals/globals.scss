@@ -2,8 +2,6 @@
 
 :root {
     /* variables */
-    --include-purple: #3c257e;
-
     --primary: #373737;
     --secondary: #fee8de;
 	--tertiary: #bf9a90;
@@ -35,6 +33,7 @@
 
     /* navbar */
     --navbar-height: 100px;
+    --max-width: 1440px;
 
 	/* icon size */
 	--icon-input-size: 1.5rem;
