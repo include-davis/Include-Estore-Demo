@@ -1,18 +1,14 @@
 [
     {
-      "name": "Home",
-      "slug": "/"
+        "name": "shop",
+        "slug": "/shop"
     },
     {
-      "name": "About Us",
-      "slug": "/about"
+        "name": "about",
+        "slug": "/about"
     },
     {
-      "name": "Examples",
-      "slug": "/examples"
-    },
-    {
-      "name": "Contact Us",
-      "slug": "/contact"
+        "name": "contact",
+        "slug": "/contact"
     }
-  ]
+]
