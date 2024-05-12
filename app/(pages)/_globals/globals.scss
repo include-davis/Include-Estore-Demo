@@ -4,16 +4,18 @@
     /* variables */
     --include-purple: #3c257e;
 
-    --primary: var(--include-purple);
+    --primary: white;
     --secondary: #e7c6f9;
 	--tertiary: #bf9a90;
 	--tertiary-light: #f8f6f5;
+    --light-foreground: white;
     --light-background: rgb(241, 240, 240);
     --dark-background: #0d303b;
 
     --text-dark: #0d303b;
     --text-light: #def6ff;
 	--text-grey: #808080;
+    --text-mid-grey: #5C5B71;
 
     /* spacers */
     --tiny-spacer: 8px;
@@ -30,7 +32,7 @@
 	--b-input-focus: 2px solid var(--tertiary);
 
     /* navbar */
-    --navbar-height: 80px;
+    --navbar-height: 100px;
 
 	/* icon size */
 	--icon-input-size: 1.5rem;
@@ -56,6 +58,7 @@ h1 {
 }
 h2 {
     font-size: 2.5rem;
+    font-weight: 400;
 }
 h3 {
     font-size: 2rem;
