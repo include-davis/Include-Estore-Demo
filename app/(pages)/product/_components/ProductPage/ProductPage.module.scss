@@ -1,0 +1,25 @@
+$mid-gap: var(--spacer);
+
+.container {
+    display: flex;
+    flex-direction: row;
+    padding: var(--medium-spacer);
+    gap: $mid-gap;
+    background-color: var(--light-foreground);
+}
+
+.main_img_container {
+    width: calc(calc(100% - $mid-gap) / 2);
+    aspect-ratio: calc(5/4);
+    position: relative;
+
+    .main_image {
+        object-fit: cover;
+    }
+}
+
+.prod_information {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer);
+}

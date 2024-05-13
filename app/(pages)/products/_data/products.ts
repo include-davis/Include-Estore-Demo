@@ -1,3 +1,11 @@
+interface Product {
+  id: string;
+  src: string;
+  alt: string;
+  name: string;
+  price: number;
+}
+
 const products = [
   {
     id: '1',
@@ -43,4 +51,4 @@ const products = [
   },
 ];
 
-export default products;
+export default products as Product[];
