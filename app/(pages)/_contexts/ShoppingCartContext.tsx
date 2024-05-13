@@ -8,6 +8,9 @@ export const ShoppingCartContext = createContext<ShoppingCartContextInt>({
   cart: [],
   add_to_cart: (_: string) => {},
   remove_from_cart: (_: string) => {},
+  compute_total: () => {
+    return 0;
+  },
 });
 
 interface CartItem {
@@ -28,6 +31,7 @@ interface ShoppingCartContextInt {
   cart: CartItem[];
   add_to_cart: (id: string) => void;
   remove_from_cart: (id: string) => void;
+  compute_total: () => number;
 }
 
 export function ShoppingCartProvider({
@@ -90,18 +94,28 @@ export function ShoppingCartProvider({
   );
 
   const remove_from_cart = useCallback(
-    (_: string) => {
+    (id: string) => {
       const cart_data = JSON.parse(data);
-      updateValue(JSON.stringify(cart_data));
+      const new_cart = cart_data.filter(
+        (item: LocalItem) => item.prod_id !== id
+      );
+      updateValue(JSON.stringify(new_cart));
     },
     [data, updateValue]
   );
+
+  const compute_total = useCallback(() => {
+    let sum = 0;
+    cart.forEach((item: CartItem) => (sum += item.prod_price * item.quantity));
+    return sum;
+  }, [cart]);
 
   const contextValue = {
     loading: loading || cartLoading,
     cart,
     add_to_cart,
     remove_from_cart,
+    compute_total,
   };
 
   return (

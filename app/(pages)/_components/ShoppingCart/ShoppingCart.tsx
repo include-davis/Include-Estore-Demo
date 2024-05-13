@@ -7,6 +7,7 @@ import { useShoppingCart } from '@hooks/useShoppingCart';
 import { FaShoppingCart } from 'react-icons/fa';
 import { HiXMark } from 'react-icons/hi2';
 import CartItem from './CartItem';
+import Link from 'next/link';
 
 export default function ShoppingCart() {
   const [show, setShow] = useState(false);
@@ -41,7 +42,14 @@ export default function ShoppingCart() {
           </div>
         )}
         <div className={styles.review_order}>
-          <button className={styles.review_order_button}>review order</button>
+          <Link href="/checkout">
+            <button
+              className={styles.review_order_button}
+              onClick={() => setShow(false)}
+            >
+              review order
+            </button>
+          </Link>
         </div>
       </div>
     </>
