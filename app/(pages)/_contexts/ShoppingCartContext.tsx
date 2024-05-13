@@ -45,11 +45,15 @@ export function ShoppingCartProvider({
 
   useEffect(() => {
     if (!cartLoading) {
-      const local_data = JSON.parse(data);
-      const expanded_data = local_data.map((local_item: LocalItem) => {
-        return products.filter((p) => p.id === local_item.prod_id)[0] ?? null;
-      });
-      setCart(expanded_data);
+      try {
+        const local_data = JSON.parse(data);
+        const expanded_data = local_data.map((local_item: LocalItem) => {
+          return products.filter((p) => p.id === local_item.prod_id)[0] ?? null;
+        });
+        setCart(expanded_data);
+      } catch (e) {
+        setCart([]);
+      }
       setLoading(false);
     }
   }, [cartLoading, data]);

@@ -4,6 +4,7 @@ import { RxHamburgerMenu, RxCross2 } from 'react-icons/rx';
 
 import styles from './Navbar.module.scss';
 import useToggle from '@hooks/useToggle';
+import ShoppingCart from '@components/ShoppingCart/ShoppingCart';
 
 interface NavLink {
   name: string;
@@ -25,6 +26,7 @@ export default function Navbar({ navLinks }: { navLinks: NavLink[] }) {
                 </Link>
               );
             })}
+            <ShoppingCart />
           </div>
           <button className={styles.menu} onClick={toggleActive}>
             {active ? <RxCross2 /> : <RxHamburgerMenu />}
