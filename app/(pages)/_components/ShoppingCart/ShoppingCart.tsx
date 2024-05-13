@@ -2,11 +2,15 @@
 
 import { useState } from 'react';
 import styles from './ShoppingCart.module.scss';
+import { useShoppingCart } from '@hooks/useShoppingCart';
 
 import { FaShoppingCart } from 'react-icons/fa';
+import { HiXMark } from 'react-icons/hi2';
+import CartItem from './CartItem';
 
 export default function ShoppingCart() {
   const [show, setShow] = useState(false);
+  const { loading, cart } = useShoppingCart();
   return (
     <>
       <button
@@ -15,13 +19,29 @@ export default function ShoppingCart() {
       >
         <FaShoppingCart />
       </button>
-      <div className={`${styles.cart_container} ${show ? styles.show : null}`}>
-        <div
-          className={`${styles.sidebar_container} ${
-            show ? styles.slide_in : null
-          }`}
-        >
-          SHOPPING CART
+      <div
+        className={`${styles.background_blur} ${show ? styles.show : null}`}
+        onClick={() => setShow(false)}
+      />
+      <div
+        className={`${styles.sidebar_container} ${
+          show ? styles.slide_in : null
+        }`}
+      >
+        <button className={styles.exit_button} onClick={() => setShow(false)}>
+          <HiXMark className={styles.x_mark} />
+        </button>
+        {loading ? (
+          'loading...'
+        ) : (
+          <div className={styles.cart_items}>
+            {cart.map((cart_item, index) => {
+              return <CartItem key={index} {...cart_item} />;
+            })}
+          </div>
+        )}
+        <div className={styles.review_order}>
+          <button className={styles.review_order_button}>review order</button>
         </div>
       </div>
     </>

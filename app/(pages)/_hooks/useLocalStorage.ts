@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export default function useLocalStorage(key: string) {
   const [loading, setLoading] = useState(true);
@@ -13,14 +13,17 @@ export default function useLocalStorage(key: string) {
     setLoading(false);
   }, [key]);
 
-  const updateValue = (newValue: string) => {
-    window.localStorage.setItem(key, newValue);
-    setData(newValue);
-  };
+  const updateValue = useCallback(
+    (newValue: string) => {
+      window.localStorage.setItem(key, newValue);
+      setData(newValue);
+    },
+    [key]
+  );
 
-  const removeValue = () => {
+  const removeValue = useCallback(() => {
     window.localStorage.removeItem(key);
-  };
+  }, [key]);
 
   return { loading, data, updateValue, removeValue };
 }

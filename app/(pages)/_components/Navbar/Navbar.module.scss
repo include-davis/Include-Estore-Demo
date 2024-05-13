@@ -43,6 +43,9 @@ $scale: 1.02;
 
         >a {
             padding: var(--tiny-spacer);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             @include mixins.tablet {
                 text-align: center;
                 padding: var(--small-spacer);
