@@ -6,6 +6,7 @@ import navLinks from '@data/navLinks.json';
 import Navbar from '@components/Navbar/Navbar';
 import Footer from './_components/Footer/Footer';
 import { ApolloContext } from '@contexts/ApolloContext';
+import { ShoppingCartProvider } from '@contexts/ShoppingCartContext';
 
 export { metadata };
 
@@ -17,9 +18,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={fonts}>
-        <Navbar navLinks={navLinks} />
-        <ApolloContext>{children}</ApolloContext>
-        <Footer navLinks={navLinks} />
+        <ShoppingCartProvider>
+          <ApolloContext>
+            <Navbar navLinks={navLinks} />
+            {children}
+            <Footer navLinks={navLinks} />
+          </ApolloContext>
+        </ShoppingCartProvider>
       </body>
     </html>
   );

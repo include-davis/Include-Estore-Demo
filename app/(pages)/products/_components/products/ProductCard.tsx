@@ -3,15 +3,16 @@ import styles from './ProductCard.module.scss';
 import Image from 'next/image';
 
 interface Props {
+  id: string;
   src: string;
   alt: string;
   name: string;
   price: number;
 }
 
-export default function ProductCard({ src, alt, name, price }: Props) {
+export default function ProductCard({ id, src, alt, name, price }: Props) {
   return (
-    <Link href={`/shop`} className={styles.container}>
+    <Link href={`/product/${id}`} className={styles.container}>
       <div className={styles.prod_image_container}>
         <Image src={src} alt={alt} fill className={styles.prod_img} />
       </div>
