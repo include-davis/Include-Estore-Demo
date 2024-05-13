@@ -73,3 +73,13 @@ p {
 input, select {
 	font-size: 1rem;
 }
+
+button {
+    background-color: var(--mid-background);
+    color: var(--text-light);
+    padding: var(--small-spacer);
+    border-radius: var(--b-radius);
+    border: none;
+    font-size: 1.125rem;
+    cursor: pointer;
+}
