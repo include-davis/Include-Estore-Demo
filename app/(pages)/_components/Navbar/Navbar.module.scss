@@ -41,15 +41,18 @@ $scale: 1.02;
         color: var(--text-mid-grey);
         font-size: 1.25rem;
 
-        >* {
+        >a {
             padding: var(--tiny-spacer);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             @include mixins.tablet {
                 text-align: center;
                 padding: var(--small-spacer);
             }
         }
 
-        >*:hover {
+        >a:hover {
             transform: scale($scale);
             @include mixins.tablet {
                 transform: none;
@@ -90,7 +93,7 @@ $scale: 1.02;
         cursor: pointer;
 
         * {
-            color: var(--text-light);
+            color: var(--text-dark);
         }
         @include mixins.tablet {
             display: flex;

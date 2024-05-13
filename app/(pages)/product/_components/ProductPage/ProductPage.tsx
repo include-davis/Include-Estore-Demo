@@ -1,5 +1,9 @@
+'use client';
+
 import styles from './ProductPage.module.scss';
 import Image from 'next/image';
+
+import { useShoppingCart } from '@hooks/useShoppingCart';
 
 interface Product {
   id: string;
@@ -9,7 +13,8 @@ interface Product {
   price: number;
 }
 
-export default function ProductPage({ id: _, src, alt, name, price }: Product) {
+export default function ProductPage({ id, src, alt, name, price }: Product) {
+  const { add_to_cart } = useShoppingCart();
   return (
     <div className={styles.container}>
       <div className={styles.main_img_container}>
@@ -18,7 +23,12 @@ export default function ProductPage({ id: _, src, alt, name, price }: Product) {
       <div className={styles.prod_information}>
         <h2>{name}</h2>
         <p>${price}</p>
-        <button className={styles.add_to_cart_button}>add to cart</button>
+        <button
+          className={styles.add_to_cart_button}
+          onClick={() => add_to_cart(id)}
+        >
+          add to cart
+        </button>
       </div>
     </div>
   );
