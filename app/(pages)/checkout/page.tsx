@@ -9,8 +9,8 @@ export default function Checkout() {
       <div>
         <DeliveryFormSection />
         <PaymentForm />
+        <CheckoutCart />
       </div>
-      <CheckoutCart />
     </div>
   );
 }

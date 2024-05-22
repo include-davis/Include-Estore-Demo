@@ -1,6 +1,5 @@
 import React from 'react';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
-
 import CardSection from './CardSection';
 import Stripe from 'stripe';
 
@@ -8,7 +7,6 @@ export default function CheckoutForm({ secret }: { secret: string }) {
   const stripe = useStripe();
   const elements = useElements();
   const key = process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY;
-
   const payment = new Stripe(`${key}`);
 
   const handleSubmit = async (event: { preventDefault: () => void }) => {
