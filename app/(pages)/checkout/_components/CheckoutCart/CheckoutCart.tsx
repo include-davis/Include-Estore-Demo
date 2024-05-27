@@ -1,3 +1,6 @@
+// This file could honestly be removed but for now I'll keep it here
+// in case it still has some use I might not be seeing
+
 'use client';
 
 import styles from './CheckoutCart.module.scss';

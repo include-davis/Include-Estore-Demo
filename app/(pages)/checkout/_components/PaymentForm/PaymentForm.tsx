@@ -24,7 +24,6 @@ export default function App() {
         body: JSON.stringify({ total }),
       });
       const data = await response.json();
-      console.log(data);
       setClientSecret(data.clientSecret);
     } catch (error) {
       console.error('Error fetching client secret:', error);
@@ -34,7 +33,6 @@ export default function App() {
   useEffect(() => {
     if (!loading) {
       const total = compute_total();
-      console.log('total:', total);
       fetchClientSecret(total);
     }
   }, [loading, compute_total, fetchClientSecret]);
