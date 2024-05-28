@@ -3,7 +3,25 @@ import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import CardSection from './CardSection';
 import Stripe from 'stripe';
 
-export default function CheckoutForm({ secret }: { secret: string }) {
+export default function CheckoutForm({
+  secret,
+  name,
+  address,
+  address2,
+  city,
+  state,
+  zip,
+  phone,
+}: {
+  secret: string;
+  name: string;
+  address: string;
+  address2: string;
+  city: string;
+  state: string;
+  zip: string;
+  phone: string;
+}) {
   const stripe = useStripe();
   const elements = useElements();
   const key = process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY;
@@ -19,13 +37,22 @@ export default function CheckoutForm({ secret }: { secret: string }) {
       // Make sure to disable form submission until Stripe.js has loaded.
       return;
     }
+    console.log('address:', address);
 
     const result = await stripe.confirmCardPayment(`${secret}`, {
       payment_method: {
         card: elements.getElement(CardElement)!,
         billing_details: {
-          name: 'Jenny Rosen',
-          email: 'matt@gmail.com',
+          name: name,
+          address: {
+            city: city,
+            country: 'US',
+            line1: address,
+            line2: address2,
+            postal_code: zip,
+            state: state,
+          },
+          phone: phone,
         },
       },
     });
@@ -41,8 +68,6 @@ export default function CheckoutForm({ secret }: { secret: string }) {
         // execution. Set up a webhook or plugin to listen for the
         // payment_intent.succeeded event that handles any business critical
         // post-payment actions.
-        console.log('Payment success');
-        console.log(result.paymentIntent);
         const intent = result.paymentIntent.payment_method;
 
         const paymentMethod = await payment.paymentMethods.retrieve(

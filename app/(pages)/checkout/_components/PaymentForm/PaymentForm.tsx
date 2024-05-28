@@ -10,7 +10,23 @@ const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
 );
 
-export default function App() {
+export default function PaymentForm({
+  name,
+  address,
+  address2,
+  city,
+  state,
+  zip,
+  phone,
+}: {
+  name: string;
+  address: string;
+  address2: string;
+  city: string;
+  state: string;
+  zip: string;
+  phone: string;
+}) {
   const { loading, cart, compute_total } = useShoppingCart();
   const [clientSecret, setClientSecret] = useState('');
 
@@ -41,7 +57,16 @@ export default function App() {
     <div id="checkout">
       {clientSecret && (
         <Elements stripe={stripePromise}>
-          <CheckoutForm secret={clientSecret} />
+          <CheckoutForm
+            secret={clientSecret}
+            name={name}
+            address={address}
+            address2={address2}
+            city={city}
+            state={state}
+            zip={zip}
+            phone={phone}
+          />
         </Elements>
       )}
     </div>
