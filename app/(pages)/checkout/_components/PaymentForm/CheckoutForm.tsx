@@ -2,6 +2,8 @@ import React from 'react';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import CardSection from './CardSection';
 import Stripe from 'stripe';
+import { useMutation } from '@apollo/client';
+import { SAVE_BILLING_INFO } from '@graphql/mutations/saveInfo';
 
 export default function CheckoutForm({
   secret,
@@ -26,6 +28,7 @@ export default function CheckoutForm({
   const elements = useElements();
   const key = process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY;
   const payment = new Stripe(`${key}`);
+  const [saveBillingInfo] = useMutation(SAVE_BILLING_INFO);
 
   const handleSubmit = async (event: { preventDefault: () => void }) => {
     // We don't want to let default form submission happen here,
@@ -37,7 +40,6 @@ export default function CheckoutForm({
       // Make sure to disable form submission until Stripe.js has loaded.
       return;
     }
-    console.log('address:', address);
 
     const result = await stripe.confirmCardPayment(`${secret}`, {
       payment_method: {
@@ -76,7 +78,26 @@ export default function CheckoutForm({
             apiKey: `${key}`,
           }
         );
-        console.log(paymentMethod);
+        console.log('method: ', paymentMethod);
+
+        try {
+          const { data } = await saveBillingInfo({
+            variables: {
+              secret,
+              paymentMethod: paymentMethod.id,
+              name: paymentMethod.billing_details.name,
+              address: paymentMethod.billing_details.address?.line1,
+              address2: paymentMethod.billing_details.address?.line2,
+              city: paymentMethod.billing_details.address?.city,
+              state: paymentMethod.billing_details.address?.state,
+              zip: paymentMethod.billing_details.address?.postal_code,
+              phone: paymentMethod.billing_details.phone,
+            },
+          });
+          console.log(data);
+        } catch (error) {
+          console.error('Someone sux at graphql routes (error msg): ', error);
+        }
       }
     }
   };
