@@ -31,6 +31,6 @@
     "@datatypes/*": ["./app/(api)/_types/*"]
     }
   },
-  "include": ["nextEnv.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["nextEnv.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/(pages)/checkout/_components/PaymentForm/CardSection.tsx"],
   "exclude": ["node_modules"]
 }

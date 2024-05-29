@@ -1,5 +1,6 @@
 import InputField from '../InputField/InputField';
 import Address from '../Address/Address';
+import PaymentForm from '../../../PaymentForm/PaymentForm';
 
 import { useState } from 'react';
 import { GoQuestion } from 'react-icons/go';
@@ -77,6 +78,15 @@ export default function ShippingInfo() {
         type="tel"
         icon={GoQuestion}
         handleFieldChange={updateShippingField}
+      />
+      <PaymentForm
+        name={`${shippingInfo.firstName!} ${shippingInfo.lastName}`}
+        address={shippingInfo.address!}
+        address2={shippingInfo.apartment!}
+        city={shippingInfo.city!}
+        state={shippingInfo.state!}
+        zip={shippingInfo.zip!}
+        phone={shippingInfo.phone!}
       />
     </div>
   );
