@@ -4,3 +4,9 @@
     padding: var(--medium-spacer);
     gap: var(--spacer);
 }
+
+.productList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

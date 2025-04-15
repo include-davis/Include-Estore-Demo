@@ -1,11 +1,18 @@
-import ProductCard from './ProductCard';
+import ProductCard, { ProductProps } from './ProductCard';
 import styles from './ProductList.module.scss';
-import products from '../../_data/products';
 
-export default function ProductList() {
+interface ProductListProps {
+  products: ProductProps[];
+  filter: string;
+}
+
+export default function ProductList({ products, filter }: ProductListProps) {
+  const filteredProducts = products.filter((product) =>
+    filter === 'all' ? true : product.tags.includes(filter)
+  );
   return (
     <div className={styles.products_container}>
-      {products.map((product, index) => (
+      {filteredProducts.map((product, index) => (
         <ProductCard key={index} {...product} />
       ))}
     </div>
