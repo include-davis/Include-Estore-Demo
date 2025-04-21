@@ -3,17 +3,24 @@ import styles from './ProductList.module.scss';
 
 interface ProductListProps {
   products: ProductProps[];
-  filter: string;
+  selectedTags: string[];
 }
 
-export default function ProductList({ products, filter }: ProductListProps) {
-  const filteredProducts = products.filter((product) =>
-    filter === 'all' ? true : product.tags.includes(filter)
-  );
+export default function ProductList({
+  products,
+  selectedTags,
+}: ProductListProps) {
+  const filteredProducts =
+    selectedTags.length === 0
+      ? products
+      : products.filter((product) =>
+          product.tags.some((tag) => selectedTags.includes(tag))
+        );
+
   return (
     <div className={styles.products_container}>
-      {filteredProducts.map((product, index) => (
-        <ProductCard key={index} {...product} />
+      {filteredProducts.map((product) => (
+        <ProductCard key={product.id} {...product} />
       ))}
     </div>
   );

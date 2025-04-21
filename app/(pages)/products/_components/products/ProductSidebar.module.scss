@@ -1,0 +1,6 @@
+.tagButtons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--tiny-spacer);
+    text-wrap: nowrap;
+}

@@ -1,29 +1,35 @@
 import styles from './ProductSidebar.module.scss';
 
 interface SidebarProps {
-  filter: string;
-  onFilterChange: (tag: string) => void;
+  selectedTags: string[];
+  onTagChange: (tag: string) => void;
+  onReset: () => void;
 }
 
 export default function ProductSidebar({
-  filter,
-  onFilterChange,
+  selectedTags,
+  onTagChange,
+  onReset,
 }: SidebarProps) {
-  const tags = ['all', 'big', 'cute', 'super duper'];
+  const tags = ['big', 'cute', 'super duper'];
+
   return (
-    <main>
-      <p>sidebar</p>
+    <aside className={styles.sidebar}>
+      <p>Filters</p>
+      <button onClick={onReset}>All</button>
+
       <div className={styles.tagButtons}>
         {tags.map((tag) => (
-          <button
-            key={tag}
-            onClick={() => onFilterChange(tag)}
-            className={filter === tag ? styles.active : ''}
-          >
+          <label key={tag} className={styles.checkbox}>
+            <input
+              type="checkbox"
+              checked={selectedTags.includes(tag)}
+              onChange={() => onTagChange(tag)}
+            />
             {tag}
-          </button>
+          </label>
         ))}
       </div>
-    </main>
+    </aside>
   );
 }

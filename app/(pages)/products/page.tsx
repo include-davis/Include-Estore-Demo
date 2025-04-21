@@ -7,14 +7,28 @@ import styles from './page.module.scss';
 import products from './_data/products';
 
 export default function Shop() {
-  const [filter, setFilter] = useState('all');
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
+  const handleTagChange = (tag: string) => {
+    setSelectedTags((prev) =>
+      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
+    );
+  };
+
+  const handleReset = () => {
+    setSelectedTags([]);
+  };
 
   return (
     <main className={styles.container}>
       <h2>shop</h2>
       <div className={styles.productList}>
-        <ProductSidebar filter={filter} onFilterChange={setFilter} />
-        <ProductList products={products} filter={filter} />
+        <ProductSidebar
+          selectedTags={selectedTags}
+          onTagChange={handleTagChange}
+          onReset={handleReset}
+        />
+        <ProductList products={products} selectedTags={selectedTags} />
       </div>
     </main>
   );
