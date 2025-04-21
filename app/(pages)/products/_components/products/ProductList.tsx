@@ -4,11 +4,13 @@ import styles from './ProductList.module.scss';
 interface ProductListProps {
   products: ProductProps[];
   selectedTags: string[];
+  searchQuery: string;
 }
 
 export default function ProductList({
   products,
   selectedTags,
+  searchQuery,
 }: ProductListProps) {
   const filteredProducts =
     selectedTags.length === 0
@@ -17,9 +19,13 @@ export default function ProductList({
           product.tags.some((tag) => selectedTags.includes(tag))
         );
 
+  const finalProducts = filteredProducts.filter((product) =>
+    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className={styles.products_container}>
-      {filteredProducts.map((product) => (
+      {finalProducts.map((product) => (
         <ProductCard key={product.id} {...product} />
       ))}
     </div>
