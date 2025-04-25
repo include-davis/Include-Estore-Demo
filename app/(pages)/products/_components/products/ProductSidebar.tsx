@@ -15,13 +15,15 @@ export default function ProductSidebar({
 
   return (
     <aside className={styles.sidebar}>
-      <p>Filters</p>
-      <button onClick={onReset}>All</button>
+      <button onClick={onReset} className={styles.allButton}>
+        shop all
+      </button>
 
       <div className={styles.tagButtons}>
         {tags.map((tag) => (
-          <label key={tag} className={styles.checkbox}>
+          <label key={tag} className={styles.filter}>
             <input
+              className={styles.checkBox}
               type="checkbox"
               checked={selectedTags.includes(tag)}
               onChange={() => onTagChange(tag)}

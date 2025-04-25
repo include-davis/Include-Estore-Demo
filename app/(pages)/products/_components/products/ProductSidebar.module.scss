@@ -1,6 +1,38 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--small-spacer);
+    min-width: 250px;
+    max-width: 20%;
+}
+
+.allButton {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    color: var(--text-mid-grey);
+    font-size: 2rem;
+}
+
 .tagButtons {
     display: flex;
     flex-direction: column;
-    gap: var(--tiny-spacer);
+    gap: var(--small-spacer);
     text-wrap: nowrap;
 }
+
+.filter {
+    display: flex;
+    gap: var(--tiny-spacer);
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.checkBox {
+    height: 1.2rem;
+    width: 1.2rem;
+    cursor: pointer;
+    accent-color: var(--mid-background);
+    vertical-align: middle;
+  }
