@@ -29,13 +29,11 @@ export default function Shop() {
 
       <div className={styles.top}>
         <SearchBar query={searchQuery} onChange={setSearchQuery} />
-        {/* Sort visible only on large screens */}
         <div className={styles.desktopOnly}>
           <ProductSort sortOption={sortOption} onChange={setSortOption} />
         </div>
       </div>
 
-      {/* This section shows only on mobile */}
       <div className={styles.sortAndToggle}>
         <button
           className={styles.hamburger}

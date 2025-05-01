@@ -42,9 +42,13 @@ export default function ProductList({
 
   return (
     <div className={styles.products_container}>
-      {sortedProducts.map((product) => (
-        <ProductCard key={product.id} {...product} />
-      ))}
+      {sortedProducts.length === 0 ? (
+        <p>no products found</p>
+      ) : (
+        sortedProducts.map((product) => (
+          <ProductCard key={product.id} {...product} />
+        ))
+      )}
     </div>
   );
 }
