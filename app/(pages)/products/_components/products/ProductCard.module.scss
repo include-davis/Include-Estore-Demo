@@ -13,6 +13,7 @@
 
 .prod_img {
     object-fit: cover;
+    border-radius: var(--b-radius);
 }
 
 .details {
@@ -29,4 +30,16 @@
     .price {
         color: var(--text-dark);
     }
+}
+
+.tags {
+    display: flex;
+    justify-content: flex-start;
+    gap: var(--small-spacer);
+}
+
+.oldPrice {
+    text-decoration: line-through;
+    color: var(--text-grey);
+    margin-right: 0.5rem;
 }

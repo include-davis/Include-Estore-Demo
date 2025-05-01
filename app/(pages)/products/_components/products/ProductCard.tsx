@@ -9,6 +9,8 @@ export interface ProductProps {
   name: string;
   price: number;
   tags: string[];
+  discount: boolean;
+  discountPrice?: number;
 }
 
 export default function ProductCard({
@@ -18,6 +20,8 @@ export default function ProductCard({
   name,
   price,
   tags,
+  discount,
+  discountPrice,
 }: ProductProps) {
   return (
     <Link href={`/product/${id}`} className={styles.container}>
@@ -26,7 +30,18 @@ export default function ProductCard({
       </div>
       <div className={styles.details}>
         <p className={styles.name}>{name}</p>
-        <p className={styles.price}>{`$${price}`}</p>
+        <p className={styles.price}>
+          {discount && discountPrice != null ? (
+            <>
+              <span className={styles.oldPrice}>${price}</span>{' '}
+              <span>${discountPrice}</span>
+            </>
+          ) : (
+            <>${price}</>
+          )}
+        </p>
+      </div>
+      <div className={styles.tags}>
         {tags.map((tag, index) => (
           <p key={index}>{tag}</p>
         ))}
