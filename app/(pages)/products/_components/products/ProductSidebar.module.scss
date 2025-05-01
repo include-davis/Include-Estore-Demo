@@ -1,10 +1,11 @@
+@use 'app/(pages)/_globals/mixins';
+
 .sidebar {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: var(--small-spacer);
-    min-width: 250px;
-    max-width: 20%;
+    min-width: 20%;
 }
 
 .allButton {
@@ -13,6 +14,10 @@
     background-color: transparent;
     color: var(--text-mid-grey);
     font-size: 2rem;
+    text-align: left;
+    @include mixins.tablet {
+        font-size: 1.5rem;
+    }
 }
 
 .tagButtons {
@@ -27,6 +32,10 @@
     gap: var(--tiny-spacer);
     align-items: center;
     font-size: 1.2rem;
+    @include mixins.tablet {
+        font-size: 1rem;
+        text-wrap: wrap;
+    }
 }
 
 .checkBox {
@@ -35,4 +44,5 @@
     cursor: pointer;
     accent-color: var(--mid-background);
     vertical-align: middle;
+    flex-shrink: 0;
   }

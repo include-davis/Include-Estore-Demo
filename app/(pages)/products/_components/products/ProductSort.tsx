@@ -11,11 +11,12 @@ export default function ProductSort({
 }: ProductSortProps) {
   return (
     <div className={styles.productSort}>
-      <label htmlFor="sort">Sort by:</label>
+      <label htmlFor="sort">sort by:</label>
       <select
         id="sort"
         value={sortOption}
         onChange={(e) => onChange(e.target.value)}
+        className={styles.sort}
       >
         <option value="default">default</option>
         <option value="name-asc">alphabetically, A-Z</option>

@@ -1,6 +1,13 @@
 .productSort {
-    margin-bottom: 1rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-  }
+}
+
+.sort {
+  padding: var(--tiny-spacer);
+  border: var(--b-input);
+  border-radius: var(--b-radius);
+  min-width: 100px;
+  outline: none;
+}

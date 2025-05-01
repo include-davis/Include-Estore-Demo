@@ -26,8 +26,10 @@ export default function Shop() {
   return (
     <main className={styles.container}>
       <h2>shop</h2>
-      <SearchBar query={searchQuery} onChange={setSearchQuery} />{' '}
-      <ProductSort sortOption={sortOption} onChange={setSortOption} />
+      <div className={styles.top}>
+        <SearchBar query={searchQuery} onChange={setSearchQuery} />{' '}
+        <ProductSort sortOption={sortOption} onChange={setSortOption} />
+      </div>
       <div className={styles.productList}>
         <ProductSidebar
           selectedTags={selectedTags}

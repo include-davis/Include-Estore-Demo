@@ -19,7 +19,6 @@ export default function ProductCard({
   alt,
   name,
   price,
-  tags,
   discount,
   discountPrice,
 }: ProductProps) {
@@ -40,11 +39,6 @@ export default function ProductCard({
             <>${price}</>
           )}
         </p>
-      </div>
-      <div className={styles.tags}>
-        {tags.map((tag, index) => (
-          <p key={index}>{tag}</p>
-        ))}
       </div>
     </Link>
   );
