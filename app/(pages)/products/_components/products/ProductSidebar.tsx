@@ -4,17 +4,29 @@ interface SidebarProps {
   selectedTags: string[];
   onTagChange: (tag: string) => void;
   onReset: () => void;
+  isOpen: boolean;
+  onClose: () => void;
 }
 
 export default function ProductSidebar({
   selectedTags,
   onTagChange,
   onReset,
+  isOpen,
+  onClose,
 }: SidebarProps) {
   const tags = ['big', 'cute', 'super duper'];
 
   return (
-    <aside className={styles.sidebar}>
+    <aside
+      className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}
+      aria-hidden={!isOpen}
+    >
+      {/* Close button only visible on phone */}
+      <button className={styles.closeButton} onClick={onClose}>
+        ✕
+      </button>
+
       <button onClick={onReset} className={styles.allButton}>
         shop all
       </button>

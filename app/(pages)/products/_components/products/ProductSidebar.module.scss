@@ -1,48 +1,86 @@
 @use 'app/(pages)/_globals/mixins';
 
 .sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--small-spacer);
+  min-width: 20%;
+
+  @include mixins.phone {
+    display: none;
+    position: absolute;
+    top: 4rem;
+    left: 1rem;
+    background: white;
+    border: 1px solid var(--border-grey);
+    padding: var(--small-spacer);
+    z-index: 10;
+    min-width: 200px;
+    box-shadow: var(--shadow-sm);
+  }
+}
+
+.open {
+  @include mixins.phone {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--small-spacer);
-    min-width: 20%;
+  }
+}
+
+.closeButton {
+  display: none;
+
+  @include mixins.phone {
+    display: block;
+    align-self: flex-end;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    margin-bottom: var(--tiny-spacer);
+    color: var(--text-mid-grey);
+  }
 }
 
 .allButton {
-    margin: 0;
-    padding: 0;
-    background-color: transparent;
-    color: var(--text-mid-grey);
-    font-size: 2rem;
-    text-align: left;
-    @include mixins.tablet {
-        font-size: 1.5rem;
-    }
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  color: var(--text-mid-grey);
+  font-size: 2rem;
+  text-align: left;
+
+  @include mixins.tablet {
+    font-size: 1.5rem;
+  }
 }
 
 .tagButtons {
-    display: flex;
-    flex-direction: column;
-    gap: var(--small-spacer);
-    text-wrap: nowrap;
+  display: flex;
+  flex-direction: column;
+  gap: var(--small-spacer);
+  text-wrap: nowrap;
 }
 
 .filter {
-    display: flex;
-    gap: var(--tiny-spacer);
-    align-items: center;
-    font-size: 1.2rem;
-    @include mixins.tablet {
-        font-size: 1rem;
-        text-wrap: wrap;
-    }
+  display: flex;
+  gap: var(--tiny-spacer);
+  align-items: center;
+  font-size: 1.2rem;
+
+  @include mixins.tablet {
+    font-size: 1rem;
+    text-wrap: wrap;
+  }
 }
 
 .checkBox {
-    height: 1.2rem;
-    width: 1.2rem;
-    cursor: pointer;
-    accent-color: var(--mid-background);
-    vertical-align: middle;
-    flex-shrink: 0;
-  }
+  height: 1.2rem;
+  width: 1.2rem;
+  cursor: pointer;
+  accent-color: var(--mid-background);
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+  
