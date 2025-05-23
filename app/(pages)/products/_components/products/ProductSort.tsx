@@ -1,4 +1,13 @@
+import { useState } from 'react';
 import styles from './ProductSort.module.scss';
+
+const options = [
+  { value: 'default', label: 'default' },
+  { value: 'name-asc', label: 'alphabetically, A-Z' },
+  { value: 'name-desc', label: 'alphabetically, Z-A' },
+  { value: 'price-asc', label: 'price, low-high' },
+  { value: 'price-desc', label: 'price, high-low' },
+];
 
 interface ProductSortProps {
   sortOption: string;
@@ -9,21 +18,28 @@ export default function ProductSort({
   sortOption,
   onChange,
 }: ProductSortProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleSelect = (value: string) => {
+    onChange(value);
+    setIsOpen(false);
+  };
+
   return (
-    <div className={styles.productSort}>
-      <label htmlFor="sort">sort by:</label>
-      <select
-        id="sort"
-        value={sortOption}
-        onChange={(e) => onChange(e.target.value)}
-        className={styles.sort}
-      >
-        <option value="default">default</option>
-        <option value="name-asc">alphabetically, A-Z</option>
-        <option value="name-desc">alphabetically, Z-A</option>
-        <option value="price-asc">price, low-high</option>
-        <option value="price-desc">price, high-low</option>
-      </select>
+    <div className={styles.dropdown}>
+      <button onClick={() => setIsOpen(!isOpen)} className={styles.trigger}>
+        <div>sort by: {options.find((o) => o.value === sortOption)?.label}</div>
+        <div>▼</div>
+      </button>
+      {isOpen && (
+        <ul className={styles.menu}>
+          {options.map((opt) => (
+            <li key={opt.value} onClick={() => handleSelect(opt.value)}>
+              {opt.label}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

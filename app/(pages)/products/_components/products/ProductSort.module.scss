@@ -1,13 +1,42 @@
-.productSort {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
 
-.sort {
+.trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 250px;
   padding: var(--tiny-spacer);
   border: var(--b-input);
   border-radius: var(--b-radius);
-  min-width: 100px;
-  outline: none;
+  background: white;
+  color: var(--text-mid-grey);
+  font-size: 1rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: var(--b-radius);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+
+  li {
+    list-style: none;
+    padding: 0.5rem;
+    color: var(--text-mid-grey);
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f2f2f2;
+    }
+  }
 }
