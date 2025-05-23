@@ -1,8 +1,9 @@
 .container {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    max-width: 350px;
     gap: var(--small-spacer);
-    width: calc(calc(100% - 2 * var(--spacer)) / 3);
 }
 
 .prod_image_container {
@@ -13,6 +14,7 @@
 
 .prod_img {
     object-fit: cover;
+    border-radius: var(--b-radius);
 }
 
 .details {
@@ -29,4 +31,16 @@
     .price {
         color: var(--text-dark);
     }
+}
+
+.tags {
+    display: flex;
+    justify-content: flex-start;
+    gap: var(--small-spacer);
+}
+
+.oldPrice {
+    text-decoration: line-through;
+    color: var(--text-grey);
+    margin-right: 0.5rem;
 }

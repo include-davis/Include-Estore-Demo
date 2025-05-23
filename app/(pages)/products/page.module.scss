@@ -1,6 +1,65 @@
+@use 'app/(pages)/_globals/mixins';
+
 .container {
     display: flex;
     flex-direction: column;
     padding: var(--medium-spacer);
     gap: var(--spacer);
+    min-height: 100vh;
 }
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    @include mixins.phone {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  
+  .sortAndToggle {
+    display: none;
+  
+    @include mixins.phone {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  
+  .desktopOnly {
+    display: block;
+  
+    @include mixins.phone {
+      display: none;
+    }
+  }
+  
+  .mobileOnly {
+    display: none;
+  
+    @include mixins.phone {
+      display: block;
+    }
+  }
+  
+  .hamburger {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--text-dark);
+  }
+
+  .productList {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacer);
+  
+    @include mixins.phone {
+      flex-direction: column;
+    }
+  }
+  
