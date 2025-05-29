@@ -14,6 +14,7 @@ $mid-gap: var(--spacer);
   aspect-ratio: 5 / 4;
   position: relative;
 
+
   .main_image {
     object-fit: cover;
   }
@@ -39,8 +40,23 @@ $mid-gap: var(--spacer);
   margin-bottom: 10px;
 }
 
+
 .price {
+  font-size: 32px;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.original_price {
+  color: #999;
+  text-decoration: line-through;
+  font-size: 16px;
+}
+
+.discounted_price {
   color: #3a2779;
+  font-weight: 600;
   font-size: 32px;
 }
 
@@ -116,6 +132,13 @@ $mid-gap: var(--spacer);
  
   }
 }
+.customization_label {
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  color: grey;
+ 
+  
+}
 
 @media (max-width: 750px) {
   .container {
@@ -132,8 +155,7 @@ $mid-gap: var(--spacer);
     width: 80%;
   }
 
- 
-  
-
 
 }
+
+
