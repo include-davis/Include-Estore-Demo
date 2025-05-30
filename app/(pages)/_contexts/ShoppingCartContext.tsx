@@ -26,7 +26,7 @@ interface LocalItem {
   prod_id: string;
   quantity: number;
   selectedOptions?: Record<string, string>;
-  discountPercent?: number;
+  discount?: number;
 }
 
 interface ShoppingCartContextInt {
@@ -73,7 +73,7 @@ export function ShoppingCartProvider({
             const item = products.find((p) => p.id === local_item.prod_id);
             if (!item) return null;
 
-            const discount = local_item.discountPercent ?? item.discountPercent;
+            const discount = local_item.discount ?? item.discount;
             const price = discount
               ? Number((item.price * (1 - discount / 100)).toFixed(2))
               : item.price;
@@ -104,7 +104,7 @@ export function ShoppingCartProvider({
     (
       id: string,
       selectedOptions: Record<string, string> = {},
-      discountPercent?: number
+      discount?: number
     ) => {
       const cart_data: LocalItem[] =
         typeof data === 'string' ? JSON.parse(data) : data;
@@ -123,7 +123,7 @@ export function ShoppingCartProvider({
           prod_id: id,
           quantity: 1,
           selectedOptions,
-          discountPercent,
+          discount,
         });
       }
 
