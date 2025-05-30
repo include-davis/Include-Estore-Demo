@@ -21,6 +21,7 @@ const products: Product[] = [
       'About 9 in (23 cm) tall, this Shiba Inu plushie is made from soft, hypoallergenic polyester with embroidered eyes and durable stitching.',
     customizations: {
       Size: ['Small', 'Medium', 'Large'],
+      Color: ['Red', 'Blue'],
     },
   },
   {
@@ -67,8 +68,7 @@ const products: Product[] = [
     name: 'shiba number 5',
     price: 70,
     discountPercent: 5,
-    description:
-      'A gift-ready shiba plush with premium stitching and fluff.',
+    description: 'A gift-ready shiba plush with premium stitching and fluff.',
   },
   {
     id: '6',
@@ -77,8 +77,7 @@ const products: Product[] = [
     name: 'shiba number 6',
     price: 18,
     discountPercent: 30,
-    description:
-      'The ultimate customizable plushie with swappable features.',
+    description: 'The ultimate customizable plushie with swappable features.',
     customizations: {
       Size: ['Small', 'Medium', 'Large'],
       Color: ['White', 'Brown'],
