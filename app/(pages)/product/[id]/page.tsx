@@ -8,6 +8,7 @@ interface Product {
   alt: string;
   name: string;
   price: number;
+  description: string;
 }
 
 export default function Product({ params }: { params: { id: string } }) {

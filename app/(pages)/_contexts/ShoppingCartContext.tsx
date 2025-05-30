@@ -41,7 +41,11 @@ interface ShoppingCartContextInt {
   compute_total: () => number;
 }
 
-export function ShoppingCartProvider({ children }: { children: React.ReactNode }) {
+export function ShoppingCartProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState<CartItem[]>([]);
   const {
@@ -108,7 +112,8 @@ export function ShoppingCartProvider({ children }: { children: React.ReactNode }
       const existingIndex = cart_data.findIndex(
         (item) =>
           item.prod_id === id &&
-          JSON.stringify(item.selectedOptions) === JSON.stringify(selectedOptions)
+          JSON.stringify(item.selectedOptions) ===
+            JSON.stringify(selectedOptions)
       );
 
       if (existingIndex !== -1) {

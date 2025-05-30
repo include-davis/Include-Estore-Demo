@@ -16,7 +16,6 @@ interface Product {
   discountPercent?: number; // add discount percent as whole int, automatocly applies it to price
 }
 
-
 export default function ProductPage({
   id,
   src,
@@ -26,14 +25,15 @@ export default function ProductPage({
   description,
   customizations = {},
   discountPercent, // ✅ add this line
-}: Product)
-{
+}: Product) {
   const { add_to_cart } = useShoppingCart();
   const [added, setAdded] = useState(false);
-  const [selectedOptions, setSelectedOptions] = useState<Record<string, string>>({});
+  const [selectedOptions, setSelectedOptions] = useState<
+    Record<string, string>
+  >({});
   const discountedPrice = discountPercent
-  ? (price * (1 - discountPercent / 100)).toFixed(2)
-  : null;
+    ? (price * (1 - discountPercent / 100)).toFixed(2)
+    : null;
 
   const handleAdd = () => {
     // Ensure every customization has a selected option
@@ -61,15 +61,18 @@ export default function ProductPage({
         <p className={styles.description}>{description}</p>
         <div className={styles.line} />
         <p className={styles.price}>
-  {discountedPrice ? (
-    <>
-      <span className={styles.original_price}>${price.toFixed(2)}</span>
-      <span className={styles.discounted_price}> ${discountedPrice}</span>
-    </>
-  ) : (
-    <>${price.toFixed(2)}</>
-  )}
-</p>
+          {discountedPrice ? (
+            <>
+              <span className={styles.original_price}>${price.toFixed(2)}</span>
+              <span className={styles.discounted_price}>
+                {' '}
+                ${discountedPrice}
+              </span>
+            </>
+          ) : (
+            <>${price.toFixed(2)}</>
+          )}
+        </p>
 
         {Object.entries(customizations).map(([category, options]) => (
           <div key={category} className={styles.option_buttons_container}>
