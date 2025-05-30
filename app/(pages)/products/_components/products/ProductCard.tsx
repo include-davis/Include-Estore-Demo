@@ -9,8 +9,7 @@ export interface ProductProps {
   name: string;
   price: number;
   tags: string[];
-  discount: boolean;
-  discountPrice?: number;
+  discount?: number;
 }
 
 export default function ProductCard({
@@ -20,7 +19,6 @@ export default function ProductCard({
   name,
   price,
   discount,
-  discountPrice,
 }: ProductProps) {
   return (
     <Link href={`/product/${id}`} className={styles.container}>
@@ -30,10 +28,10 @@ export default function ProductCard({
       <div className={styles.details}>
         <p className={styles.name}>{name}</p>
         <p className={styles.price}>
-          {discount && discountPrice != null ? (
+          {discount ? (
             <>
               <span className={styles.oldPrice}>${price}</span>{' '}
-              <span>${discountPrice}</span>
+              <span>${price * (1.0 - discount)}</span>
             </>
           ) : (
             <>${price}</>
