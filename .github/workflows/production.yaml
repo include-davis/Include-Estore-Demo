@@ -26,7 +26,7 @@ jobs:
 
       - name: Lint and build code, then publish to Vercel
         run: >
-          vercel
+          npx vercel
           --token ${{ secrets.VERCEL_TOKEN }}
           -n ${{ vars.VERCEL_PROJECT }}
           --yes
@@ -35,4 +35,4 @@ jobs:
           --build-env NEXT_PUBLIC_GRAPHQL_ENDPOINT=${{ vars.GRAPHQL_ENDPOINT }}
 
       - name: Success
-        run: echo "🚀  Deploy successful 🚀 "
+        run: echo "🚀 Deploy successful 🚀 "
